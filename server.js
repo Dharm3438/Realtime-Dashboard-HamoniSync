@@ -1,10 +1,10 @@
-var static = require("node-static");
-var Hamoni = require("hamoni-sync");
+let static = require("node-static");
+let Hamoni = require("hamoni-sync");
 
 //
 // Create a node-static server instance to serve the './public' folder
 //
-var file = new static.Server("./public");
+let file = new static.Server("./public");
 
 require("http")
   .createServer(function(request, response) {
@@ -109,10 +109,10 @@ function updateBarChart() {
     .then(myBarChart => {
       console.log("get success");
       setInterval(() => {
-        var data = Math.floor(Math.random() * (2500 - 200)) + 200;
+        let data = Math.floor(Math.random() * (2500 - 200)) + 200;
 
         let month = ["January", "February", "March", "April", "May", "June"];
-        var index = Math.floor(Math.random() * (5 - 0)) + 0;
+        let index = Math.floor(Math.random() * (5 - 0)) + 0;
         myBarChart.update(index, { label: month[index], data: data });
       }, 5000);
     })
@@ -124,9 +124,9 @@ function updateAreaChart() {
     .then(myAreaChart => {
       console.log("get success");
       setInterval(() => {
-        var data = Math.floor(Math.random() * (40000 - 11000)) + 200;
+        let data = Math.floor(Math.random() * (40000 - 11000)) + 200;
         let month = ["January", "February", "March", "April", "May", "June"];
-        var index = Math.floor(Math.random() * (6 - 0)) + 0;
+        let index = Math.floor(Math.random() * (6 - 0)) + 0;
         myAreaChart.update(index, { label: month[index], data: data });
       }, 2000);
     })
