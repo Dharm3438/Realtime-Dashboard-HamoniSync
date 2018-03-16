@@ -35,9 +35,9 @@ hamoni
 function createMessageCount() {
   hamoni
     .createValue("dashboard-messages", 20)
-    .then(areaChart => {
+    .then(state => {
       console.log("create message count success");
-      updateMessageCount();
+      updateMessageCount(state);
     })
     .catch(error => console.log(error));
 }
@@ -68,7 +68,7 @@ function createAreaChart() {
     ])
     .then(areaChart => {
       console.log("create area chart success");
-      updateAreaChart();
+      updateAreaChart(areaChart);
     })
     .catch(error => console.log(error));
 }
@@ -85,50 +85,76 @@ function createBarChart() {
     ])
     .then(barChart => {
       console.log("create success");
-      updateBarChart();
+      updateBarChart(barChart);
     })
     .catch(error => console.log(error));
 }
 
-function updateMessageCount() {
-  hamoni
-    .get("dashboard-messages")
-    .then(state => {
-      console.log("get success");
-      setInterval(() => {
-        let count = Math.floor(Math.random() * (8 - 1)) + 1;
-        state.update(state.get() + count);
-      }, 3000);
-    })
-    .catch(error => console.log(error));
+function updateMessageCount(state) {
+  if (state) {
+    setInterval(() => {
+      let count = Math.floor(Math.random() * (8 - 1)) + 1;
+      state.update(state.get() + count);
+    }, 3000);
+  } else {
+    hamoni
+      .get("dashboard-messages")
+      .then(state => {
+        console.log("get success");
+        setInterval(() => {
+          let count = Math.floor(Math.random() * (8 - 1)) + 1;
+          state.update(state.get() + count);
+        }, 3000);
+      })
+      .catch(error => console.log(error));
+  }
 }
 
-function updateBarChart() {
-  hamoni
-    .get("myBarChart")
-    .then(myBarChart => {
-      console.log("get success");
-      setInterval(() => {
-        let data = Math.floor(Math.random() * (2500 - 200)) + 200;
+function updateBarChart(state) {
+  if (state) {
+    setInterval(() => {
+      let data = Math.floor(Math.random() * (2500 - 200)) + 200;
 
-        let month = ["January", "February", "March", "April", "May", "June"];
-        let index = Math.floor(Math.random() * (5 - 0)) + 0;
-        myBarChart.update(index, { label: month[index], data: data });
-      }, 5000);
-    })
-    .catch(error => console.log(error));
+      let month = ["January", "February", "March", "April", "May", "June"];
+      let index = Math.floor(Math.random() * (5 - 0)) + 0;
+      state.update(index, { label: month[index], data: data });
+    }, 5000);
+  } else {
+    hamoni
+      .get("myBarChart")
+      .then(myBarChart => {
+        console.log("get success");
+        setInterval(() => {
+          let data = Math.floor(Math.random() * (2500 - 200)) + 200;
+
+          let month = ["January", "February", "March", "April", "May", "June"];
+          let index = Math.floor(Math.random() * (5 - 0)) + 0;
+          myBarChart.update(index, { label: month[index], data: data });
+        }, 5000);
+      })
+      .catch(error => console.log(error));
+  }
 }
-function updateAreaChart() {
-  hamoni
-    .get("myAreaChart")
-    .then(myAreaChart => {
-      console.log("get success");
-      setInterval(() => {
-        let data = Math.floor(Math.random() * (40000 - 11000)) + 200;
-        let month = ["January", "February", "March", "April", "May", "June"];
-        let index = Math.floor(Math.random() * (6 - 0)) + 0;
-        myAreaChart.update(index, { label: month[index], data: data });
-      }, 2000);
-    })
-    .catch(error => console.log(error));
+function updateAreaChart(state) {
+  if (state) {
+    setInterval(() => {
+      let data = Math.floor(Math.random() * (40000 - 11000)) + 200;
+      let month = ["January", "February", "March", "April", "May", "June"];
+      let index = Math.floor(Math.random() * (6 - 0)) + 0;
+      state.update(index, { label: month[index], data: data });
+    }, 2000);
+  } else {
+    hamoni
+      .get("myAreaChart")
+      .then(myAreaChart => {
+        console.log("get success");
+        setInterval(() => {
+          let data = Math.floor(Math.random() * (40000 - 11000)) + 200;
+          let month = ["January", "February", "March", "April", "May", "June"];
+          let index = Math.floor(Math.random() * (6 - 0)) + 0;
+          myAreaChart.update(index, { label: month[index], data: data });
+        }, 2000);
+      })
+      .catch(error => console.log(error));
+  }
 }
