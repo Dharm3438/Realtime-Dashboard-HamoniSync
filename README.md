@@ -15,8 +15,8 @@ To begin using this sample app
 * Copy your Account and Application ID from your [dashboard](https://dashboard.hamoni.tech) if you're already logged in. If you don't have an account, [Register and Login](https://dashboard.hamoni.tech) to Hamoni Sync dashboard
 * Open **server.js**. On line **20**, replace the sring placeholder for account and application ID with values you see on your dashboard.
 * Open **sb-admin-charts.js** in `public/js` folder. Replace the sring placeholder for account and application ID with values you see on your dashboard.
-* Start the application using `npm start`. This starts the starts the server and serves file from `localhost:5055`. It also tries to create and update state at certain intervals. If you restart the application, it may have created the state. if that is the case, comment lines **25** - **28** and uncomment lines **29** - **31**
-* Open the url `localhost:5055` in the browser and see the dashboard change in real-time.
+* Start the application using `npm start`. This starts the starts the server and serves file from `localhost:5000`. It also tries to create and update state at certain intervals. If you restart the application, it may have created the state. if that is the case, comment lines **25** - **28** and uncomment lines **29** - **31**
+* Open the url `localhost:5000` in the browser and see the dashboard change in real-time.
 
 For a walkthrough on Hamoni Sync or Quick Start tutorial on building a live dashboard, see the doccumentation at [docs.hamoni.tech](https://docs.hamoni.tech)
 
@@ -24,7 +24,7 @@ For a walkthrough on Hamoni Sync or Quick Start tutorial on building a live dash
 
 #
 
-Hamoni Sync \($$beta$$\)
+Hamoni Sync
 
 ---
 
@@ -41,5 +41,4 @@ With Sync you can build:
 * Live Dashboards
 * Live Score board
 * Stock Ticker
-* Live Match Score
 * Game States and many more!
