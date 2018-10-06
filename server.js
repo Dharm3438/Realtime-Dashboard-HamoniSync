@@ -19,7 +19,7 @@ require("http")
 
 const accountId = "YOUR_ACCOUNT_ID";
 const appId = "YOUR_APP_ID";
-let token;
+let hamoni;
 
 fetch("https://api.sync.hamoni.tech/v1/token", {
 method: "POST",
@@ -27,11 +27,11 @@ headers: {
 "Content-Type": "application/json; charset=utf-8"
 },
 body: JSON.stringify({ accountId, appId })
-}).then(response => (token = response));
+}).then(token =>
 
-let hamoni = new Hamoni(token);
+ hamoni = new Hamoni(token);
 
-hamoni
+ hamoni
   .connect()
   .then(response => {
     createAreaChart();
@@ -43,6 +43,8 @@ hamoni
     // updateMessageCount();
   })
   .catch(error => console.log(error));
+
+);
 
 function createMessageCount() {
   hamoni
