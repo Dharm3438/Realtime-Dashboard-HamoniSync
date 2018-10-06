@@ -43,7 +43,6 @@ body: JSON.stringify({ accountId, appId })
     // updateMessageCount();
   })
   .catch(error => console.log(error));
-
 );
 
 function createMessageCount() {
