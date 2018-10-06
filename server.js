@@ -17,7 +17,19 @@ require("http")
   })
   .listen(process.env.PORT || 5000);
 
-let hamoni = new Hamoni("AccountID", "APP_ID");
+const accountId = "YOUR_ACCOUNT_ID";
+const appId = "YOUR_APP_ID";
+let token;
+
+fetch("https://api.sync.hamoni.tech/v1/token", {
+method: "POST",
+headers: {
+"Content-Type": "application/json; charset=utf-8"
+},
+body: JSON.stringify({ accountId, appId })
+}).then(response => (token = response));
+
+let hamoni = new Hamoni(token);
 
 hamoni
   .connect()
