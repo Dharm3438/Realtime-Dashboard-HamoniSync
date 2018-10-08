@@ -28,7 +28,7 @@ headers: {
 },
 body: JSON.stringify({ accountId, appId })
 }).then(token =>
-
+{
  hamoni = new Hamoni(token);
 
  hamoni
@@ -43,7 +43,7 @@ body: JSON.stringify({ accountId, appId })
     // updateMessageCount();
   })
   .catch(error => console.log(error));
-);
+});
 
 function createMessageCount() {
   hamoni
