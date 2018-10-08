@@ -10,9 +10,9 @@ headers: {
 },
 body: JSON.stringify({ accountId, appId })
 }).then(token =>
-        
-hamoni = new Hamoni(token);
-hamoni
+{        
+  hamoni = new Hamoni(token);
+  hamoni
   .connect()
   .then(response => {
     // -- Set new default font family and font color to mimic Bootstrap's default styling
@@ -83,7 +83,7 @@ hamoni
       .catch(error => console.log(error));
   })
   .catch(error => console.log(error));
-);
+});
 
 function makeAreaChart(state) {
   var ctx = document.getElementById("myAreaChart");
